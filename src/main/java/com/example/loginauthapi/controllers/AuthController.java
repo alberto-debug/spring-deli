@@ -45,8 +45,8 @@ public class AuthController {
         Optional<User> user = this.repository.findByEmail(body.email());
 
         //if its in database, return bad request
-        if (user.isPresent()){
-            return  ResponseEntity.badRequest().body("Error : email in use");
+        if (repository.findByEmail(body.email()).isPresent()){
+            return ResponseEntity.status(409).body("User already exists with this email");
         }
 
             User newUser = new User();

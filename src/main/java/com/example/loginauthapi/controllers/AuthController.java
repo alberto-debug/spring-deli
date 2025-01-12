@@ -38,30 +38,57 @@ public class AuthController {
     }
 
 
+//    @PostMapping("/register")
+//    public ResponseEntity register(@RequestBody RegisterRequestDTO body){
+//
+//        //verify if the user is in the database
+//        Optional<User> user = this.repository.findByEmail(body.email());
+//
+//        //if its in database, return bad request
+//        if (repository.findByEmail(body.email()).isPresent()){
+//            return ResponseEntity.status(409).body("User already exists with this email");
+//        }
+//
+//            User newUser = new User();
+//            newUser.setName(body.name());
+//            newUser.setEmail(body.email());
+//            newUser.setPassword(passwordEncoder.encode(body.password()));
+//
+//            //save the new user in the database
+//            this.repository.save(newUser);
+//
+//            //Generate the token of authentication
+//            String token = this.tokenService.generateToken(newUser);
+//
+//            //return the request with the name of the user and token
+//            return ResponseEntity.ok(new ResponseDTO(newUser.getName(), token));
+//
+//    }
+
     @PostMapping("/register")
-    public ResponseEntity register(@RequestBody RegisterRequestDTO body){
+    public ResponseEntity register(@RequestBody RegisterRequestDTO body) {
+        try {
+            // Check if the user exists
+            if (repository.findByEmail(body.email()).isPresent()) {
+                // Log the error in the terminal
+                System.err.println("Error: User already exists with email " + body.email());
+                return ResponseEntity.status(409).body("User already exists with this email");
+            }
 
-        //verify if the user is in the database
-        Optional<User> user = this.repository.findByEmail(body.email());
-
-        //if its in database, return bad request
-        if (repository.findByEmail(body.email()).isPresent()){
-            return ResponseEntity.status(409).body("User already exists with this email");
-        }
-
+            // Create and save the new user
             User newUser = new User();
             newUser.setName(body.name());
             newUser.setEmail(body.email());
             newUser.setPassword(passwordEncoder.encode(body.password()));
+            repository.save(newUser);
 
-            //save the new user in the database
-            this.repository.save(newUser);
-
-            //Generate the token of authentication
-            String token = this.tokenService.generateToken(newUser);
-
-            //return the request with the name of the user and token
+            // Generate and return the token
+            String token = tokenService.generateToken(newUser);
             return ResponseEntity.ok(new ResponseDTO(newUser.getName(), token));
-
+        } catch (Exception e) {
+            // Log unexpected errors for debugging
+            System.err.println("Error during user registration: " + e.getMessage());
+            return ResponseEntity.status(500).body("An unexpected error occurred");
+        }
     }
 }

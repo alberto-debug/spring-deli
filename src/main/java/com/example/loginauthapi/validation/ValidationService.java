@@ -16,6 +16,7 @@ public class ValidationService {
         }
     }
 
+
     public void validatePassword(String password) throws ValidationException {
         String passwordRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
         if (!Pattern.compile(passwordRegex).matcher(password).matches()) {

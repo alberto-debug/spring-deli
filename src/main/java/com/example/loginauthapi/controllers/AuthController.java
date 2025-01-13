@@ -6,6 +6,9 @@ import com.example.loginauthapi.dto.RegisterRequestDTO;
 import com.example.loginauthapi.dto.ResponseDTO;
 import com.example.loginauthapi.infra.security.TokenService;
 import com.example.loginauthapi.repositories.UserRepository;
+import com.example.loginauthapi.validation.ValidationException;
+import com.example.loginauthapi.validation.ValidationService;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
 
+@Data
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
@@ -25,6 +29,7 @@ public class AuthController {
     private final UserRepository repository;
     private final PasswordEncoder passwordEncoder;
     private final TokenService tokenService;
+    final ValidationService validationService;
 
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody LoginRequestDTO body){
@@ -68,26 +73,35 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity register(@RequestBody RegisterRequestDTO body) {
         try {
-            // Check if the user exists
+            // Validate the email and password
+            validationService.validateEmail(body.email());
+            validationService.validatePassword(body.password());
+
+            // Check if the user already exists
             if (repository.findByEmail(body.email()).isPresent()) {
-                // Log the error in the terminal
                 System.err.println("Error: User already exists with email " + body.email());
                 return ResponseEntity.status(409).body("User already exists with this email");
             }
 
-            // Create and save the new user
+            // Create a new user and save to the database
             User newUser = new User();
             newUser.setName(body.name());
             newUser.setEmail(body.email());
             newUser.setPassword(passwordEncoder.encode(body.password()));
+
             repository.save(newUser);
 
             // Generate and return the token
             String token = tokenService.generateToken(newUser);
             return ResponseEntity.ok(new ResponseDTO(newUser.getName(), token));
+        } catch (ValidationException e) {
+            // Handle validation errors
+            System.err.println("Validation error: " + e.getMessage());
+            return ResponseEntity.status(400).body(e.getMessage());
         } catch (Exception e) {
-            // Log unexpected errors for debugging
-            System.err.println("Error during user registration: " + e.getMessage());
+            // Handle unexpected errors
+            System.err.println("Unexpected error during user registration: " + e.getMessage());
+            e.printStackTrace();
             return ResponseEntity.status(500).body("An unexpected error occurred");
         }
     }

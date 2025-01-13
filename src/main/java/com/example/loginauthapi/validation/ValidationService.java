@@ -18,7 +18,7 @@ public class ValidationService {
 
 
     public void validatePassword(String password) throws ValidationException {
-        String passwordRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
+        String passwordRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&.])[A-Za-z\\d@$!%*?&.]{8,}$";
         if (!Pattern.compile(passwordRegex).matcher(password).matches()) {
             throw new ValidationException(
                     "Password must be at least 8 characters long, include an uppercase letter, a lowercase letter, a digit, and a special character"

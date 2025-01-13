@@ -36,7 +36,9 @@ public class AuthController {
         User user = this.repository.findByEmail(body.email()).orElseThrow(() -> new RuntimeException("User not found"));
         if(passwordEncoder.matches(body.password(), user.getPassword())) {
             String token = this.tokenService.generateToken(user);
-            return ResponseEntity.ok(new ResponseDTO(user.getName(), token));
+            String userLogged = "User Logged Successfully";
+            System.out.println(userLogged + " Name: " + user.getName());
+            return ResponseEntity.ok(new ResponseDTO(userLogged, token));
         }
         return ResponseEntity.badRequest().build();
 
@@ -93,7 +95,10 @@ public class AuthController {
 
             // Generate and return the token
             String token = tokenService.generateToken(newUser);
-            return ResponseEntity.ok(new ResponseDTO(newUser.getName(), token));
+
+            String successMessage = "User Registered Successfully";
+            System.out.println(successMessage + " Name: " + newUser.getName() );
+            return ResponseEntity.ok(new ResponseDTO(successMessage, token));
         } catch (ValidationException e) {
             // Handle validation errors
             System.err.println("Validation error: " + e.getMessage());

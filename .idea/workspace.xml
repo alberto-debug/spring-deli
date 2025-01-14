@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="87675954-5604-402e-b0a7-90ce99da4c39" name="Changes" comment="changes">
+    <list default="true" id="87675954-5604-402e-b0a7-90ce99da4c39" name="Changes" comment="register and login with error handling">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/loginauthapi/controllers/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/loginauthapi/controllers/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/loginauthapi/validation/ValidationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/loginauthapi/validation/ValidationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/loginauthapi/controllers/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/loginauthapi/controllers/AuthController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +150,23 @@
       <option name="project" value="LOCAL" />
       <updated>1736775591637</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="changes">
+      <option name="closed" value="true" />
+      <created>1736777415238</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1736777415238</updated>
+    </task>
+    <task id="LOCAL-00008" summary="register and login with error handling">
+      <option name="closed" value="true" />
+      <created>1736777509288</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1736777509288</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -173,6 +188,7 @@
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
     <MESSAGE value="changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="changes" />
+    <MESSAGE value="register and login with error handling" />
+    <option name="LAST_COMMIT_MESSAGE" value="register and login with error handling" />
   </component>
 </project>

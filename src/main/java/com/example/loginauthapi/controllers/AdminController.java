@@ -28,17 +28,6 @@ public class AdminController {
     @Autowired
     private RoleRepository roleRepository;
 
-    // Add the admin role to the system (This should be done only once)
-    @PostMapping("/createAdminRole")
-    public ResponseEntity<String> createAdminRole() {
-        if (roleRepository.findByName("ROLE_ADMIN").isEmpty()) {
-            AppRole adminRole = new AppRole();
-            adminRole.setName("ROLE_ADMIN");
-            roleRepository.save(adminRole);
-            return ResponseEntity.ok("Admin role created successfully");
-        }
-        return ResponseEntity.status(409).body("Admin role already exists");
-    }
 
     // Promote a user to admin
     @PostMapping("/promoteToAdmin/{userId}")

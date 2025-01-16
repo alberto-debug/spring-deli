@@ -15,5 +15,13 @@ public class AppRole {
     @Column(nullable = false, unique = true)
     private String name;
 
+    public AppRole(){
+
+    }
+    // Constructor with name argument
+    public AppRole(String name) {
+        this.name = name;
+    }
+
 
 }

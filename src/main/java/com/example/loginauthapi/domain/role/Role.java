@@ -1,8 +1,10 @@
 package com.example.loginauthapi.domain.role;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+@Data
 @Entity
 public class Role {
 

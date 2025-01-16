@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.management.relation.Role;
+import java.util.Collection;
+
 @Entity
 @Table(name = "users")
 @Getter
@@ -14,9 +17,23 @@ import lombok.Setter;
 @NoArgsConstructor
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
-    private String name;
+
+    @Column(nullable = false, unique = true)
+    private String username;
+
+    @Column(nullable=false, unique=true)
     private String email;
+
+    @Column(nullable = false)
     private String password;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Collection<Role> roles;
 }

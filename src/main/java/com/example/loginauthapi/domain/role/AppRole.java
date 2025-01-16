@@ -2,11 +2,11 @@ package com.example.loginauthapi.domain.role;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Data
 @Entity
-public class Role {
+@Table(name = "roles")
+public class AppRole {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,4 +14,6 @@ public class Role {
 
     @Column(nullable = false, unique = true)
     private String name;
+
+
 }

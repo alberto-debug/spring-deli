@@ -26,7 +26,7 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public void createAdminAccount(String name , String email , Long password){
+    public void createAdminAccount(String name , String email , String password){
 
         if (userRepository.findByName(name).isEmpty()){
             AppRole role = roleRepository.findByName("ADMIN")
@@ -35,7 +35,7 @@ public class UserService {
             User adminUser = new User();
             adminUser.setName(name);
             adminUser.setEmail(email);
-            adminUser.setPassword(passwordEncoder.encode(password));
+            adminUser.setPassword(password);
 
             userRepository.save(adminUser);
             System.out.println("Admin account created with username: " + name);

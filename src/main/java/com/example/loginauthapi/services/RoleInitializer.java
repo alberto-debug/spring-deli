@@ -36,10 +36,8 @@ public class RoleInitializer {
             }
         });
 
-        
+        // Create admin account
+        userService.createAdminAccount("admin", "admin@example.com", "Peteleco1.");
     }
-
-    //Create Admin Account
-
 
 }

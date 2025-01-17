@@ -9,16 +9,18 @@ import org.springframework.stereotype.Service;
 import javax.management.relation.Role;
 import java.util.Arrays;
 
+
 @Service
 public class RoleInitializer {
 
     private final RoleRepository roleRepository;
 
-    @Autowired
+
     private UserService userService;
 
-    public RoleInitializer(RoleRepository roleRepository) {
+    public RoleInitializer(RoleRepository roleRepository, UserService userService) {
         this.roleRepository = roleRepository;
+        this.userService = userService;
     }
 
     @PostConstruct
@@ -36,8 +38,16 @@ public class RoleInitializer {
             }
         });
 
+        // Initialize Admin account
+        try {
+            userService.createAdminAccount("admin", "admin@gmail.com", "Peteleco1.");
+            System.out.println("Admin account initialized.");
+        } catch (Exception e) {
+            System.err.println("Failed to create Admin account: " + e.getMessage());
+        }
+
         // Create admin account
-        userService.createAdminAccount("admin", "admin@example.com", "Peteleco1.");
+//        userService.createAdminAccount("admin", "admin@gmail.com", "Peteleco1.");
     }
 
 }

@@ -29,7 +29,7 @@ public class UserService {
     public void createAdminAccount(String name , String email , String password){
 
         if (userRepository.findByName(name).isEmpty()){
-            AppRole role = roleRepository.findByName("ADMIN")
+            AppRole role = roleRepository.findByName("ROLE_ADM")
                     .orElseThrow(() -> new RuntimeException("ADM Role not found"));
 
             User adminUser = new User();

@@ -8,6 +8,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/loginauthapi/services/RoleInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/loginauthapi/services/RoleInitializer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/loginauthapi/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/loginauthapi/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/loginauthapi/controllers/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/loginauthapi/controllers/AdminController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/loginauthapi/services/RoleInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/loginauthapi/services/RoleInitializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/loginauthapi/services/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/loginauthapi/services/UserService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -440,7 +443,23 @@
       <option name="project" value="LOCAL" />
       <updated>1737140181160</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="changes">
+      <option name="closed" value="true" />
+      <created>1737140379346</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1737140379347</updated>
+    </task>
+    <task id="LOCAL-00044" summary="changes">
+      <option name="closed" value="true" />
+      <created>1737140390481</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1737140390481</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="UnknownFeatures">

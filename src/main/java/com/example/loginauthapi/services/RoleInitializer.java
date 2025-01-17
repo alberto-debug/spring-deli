@@ -3,6 +3,7 @@ package com.example.loginauthapi.services;
 import com.example.loginauthapi.domain.role.AppRole;
 import com.example.loginauthapi.repositories.RoleRepository;
 import jakarta.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.management.relation.Role;
@@ -12,6 +13,9 @@ import java.util.Arrays;
 public class RoleInitializer {
 
     private final RoleRepository roleRepository;
+
+    @Autowired
+    private UserService userService;
 
     public RoleInitializer(RoleRepository roleRepository) {
         this.roleRepository = roleRepository;
@@ -31,5 +35,11 @@ public class RoleInitializer {
                 System.out.println("Role " + roleName + " already exists.");
             }
         });
+
+        
     }
+
+    //Create Admin Account
+
+
 }

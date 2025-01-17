@@ -55,7 +55,6 @@ public class AdminController {
         return ResponseEntity.ok(users);
     }
 
-
     // Remove admin role from user
     @PostMapping("/removeAdmin/{userId}")
     public ResponseEntity<String> removeAdminRole(@PathVariable Long userId) {

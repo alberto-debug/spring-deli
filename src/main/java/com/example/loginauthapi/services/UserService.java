@@ -32,6 +32,10 @@ public class UserService {
             AppRole role = roleRepository.findByName("ADMIN")
                     .orElseThrow(() -> new RuntimeException("ADM Role not found"));
 
+            User adminUSer = new User();
+            adminUSer.setName(name);
+            adminUSer.setEmail(email);
+            adminUSer.setPassword(passwordEncoder.encode(password));
 
         }
     }

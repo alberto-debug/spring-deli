@@ -22,8 +22,7 @@ public class RoleInitializer {
         this.roleRepository = roleRepository;
         this.userService = userService;
     }
-
-
+    
     @PostConstruct
     public void initializeRoles() {
         String[] roles = {"ROLE_USER", "ROLE_ADM"};

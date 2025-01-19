@@ -23,7 +23,8 @@ public class RoleInitializer {
         this.userService = userService;
     }
 
-    
+
+
     @PostConstruct
     public void initializeRoles() {
         String[] roles = {"ROLE_USER", "ROLE_ADM"};

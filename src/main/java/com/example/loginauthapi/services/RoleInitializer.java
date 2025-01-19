@@ -24,7 +24,6 @@ public class RoleInitializer {
     }
 
 
-
     @PostConstruct
     public void initializeRoles() {
         String[] roles = {"ROLE_USER", "ROLE_ADM"};
